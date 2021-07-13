@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userservice
+spec:
+  selector:
+    matchLabels:
+      app: userservice
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: userservice
+        version: v1
+    spec:
+      containers:
+        - name: userservice-container
+          image: sukanyadas/userservice:v1
+          env:                        
+            - name: SQL_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: user-config
+                  key: sqlhost
+            - name: SQL_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: user-config
+                  key: sqldb
+            - name: SQL_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: user-config
+                  key: sqluser
+            - name: SQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: userdb-secret
+                  key: sqlsapassword
+            - name: SQL_INTEGRATED_SECURITY
+              valueFrom:
+                configMapKeyRef:
+                  name: user-config
+                  key: sqlsecuritytype                                        
+          resources:
+            limits:
+              memory: "100Mi"
+              cpu: "100m"
+          ports:
+            - containerPort: 80

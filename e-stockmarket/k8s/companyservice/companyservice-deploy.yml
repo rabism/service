@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: companyservice
+spec:
+  selector:
+    matchLabels:
+      app: companyservice
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: companyservice
+        version: v1
+    spec:
+      containers:
+        - name: companyservice-container
+          image: sukanyadas/companyservice:v1
+          env:            
+            - name: KAFKA_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: company-config
+                  key: kafkahost
+            - name: KAFKA_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: company-config
+                  key: kafkaport
+            - name: KAFKA_GROUP_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: company-config
+                  key: kafkagroupid
+            - name: SQL_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: company-config
+                  key: sqlhost
+            - name: SQL_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: company-config
+                  key: sqldb
+            - name: SQL_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: company-config
+                  key: sqluser
+            - name: SQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: userdb-secret
+                  key: sqlsapassword
+            - name: SQL_INTEGRATED_SECURITY
+              valueFrom:
+                configMapKeyRef:
+                  name: company-config
+                  key: sqlsecuritytype                                        
+          resources:
+            limits:
+              memory: "100Mi"
+              cpu: "100m"
+          ports:
+            - containerPort: 80

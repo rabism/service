@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: kafka
+  name: kafka-service
+spec:
+  ports:
+    - port: 9092
+      targetPort: 9092
+  selector:
+    app: kafka
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka
+  labels:
+    app: kafka
+spec:
+  template:
+    metadata:
+      labels:
+        app: kafka
+    spec:
+      hostname: kafka-service
+      containers:
+        - name: kafka
+          image: wurstmeister/kafka
+          command: [start-kafka.sh]
+          ports:
+            - containerPort: 9092
+          envFrom:
+            - configMapRef:
+                name: kafka
+      restartPolicy: Always
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka

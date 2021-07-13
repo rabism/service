@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apigatewayservice
+spec:
+  selector:
+    matchLabels:
+      app: apigatewayservice
+  template:
+    metadata:
+      labels:
+        app: apigatewayservice
+    spec:
+      containers:
+        - name: apigatewayservice-container
+          image: sukanyadas/apigatewayservice:v1
+          resources:
+            limits:
+              memory: "112Mi"
+              cpu: "30m"
+          ports:
+            - containerPort: 80

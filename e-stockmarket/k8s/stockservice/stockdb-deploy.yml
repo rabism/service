@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stockdb
+spec:
+  selector:
+    matchLabels:
+      app: stockdb
+  template:
+    metadata:
+      labels:
+        app: stockdb
+    spec:
+      containers:
+        - name: stockdb-container
+          image: mongo
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: stockdb-secret
+                  key: dbuser
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: stockdb-secret
+                  key: dbpassword
+          volumeMounts:
+            - mountPath: "/data/db/"
+              name: stockdb-storage
+          ports:
+            - containerPort: 27017
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "200m"
+      volumes:
+        - name: stockdb-storage
+          persistentVolumeClaim:
+            claimName: stockdb-pvc

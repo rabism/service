@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: company-config
+data:
+  dbname: "CompanyDb"
+  kafkahost: kafka-service
+  kafkaport: "9092"

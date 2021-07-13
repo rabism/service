@@ -1,0 +1,57 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:50478"
+      //"sslPort": 44397
+    }
+  },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger/index.html",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:5005",
+        "MONGO_CONNECTION_STRING":"mongodb://localhost:27017",
+        "MONGO_DATABASE_NAME":"StockDB",
+        "RABBIT_HOST":"localhost",
+        "RABBIT_ADD_COMPANY_QUEUE":"newcustomer",
+        "RABBIT_DELETE_COMPANY_QUEUE":"deletecustomer",
+        "RABBIT_ADD_STOCK_QUEUE":"addstock",
+        "RABBIT_USERNAME":"guest",
+        "RABBIT_PASSWORD":"guest",
+        "ELASTIC_URL":"http://localhost:9200"
+      }
+    },
+    "StocksAPI": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger/index.html",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "MONGO_CONNECTION_STRING":"mongodb://localhost:27017",
+        "MONGO_DATABASE_NAME":"StockDB",
+        "RABBIT_HOST":"localhost",
+        "RABBIT_ADD_COMPANY_QUEUE":"newcustomer",
+        "RABBIT_DELETE_COMPANY_QUEUE":"deletecustomer",
+        "RABBIT_ADD_STOCK_QUEUE":"addstock",
+        "RABBIT_USERNAME":"guest",
+        "RABBIT_PASSWORD":"guest",
+        "ELASTIC_URL":"http://localhost:9200"
+
+      },
+      "applicationUrl": "http://localhost:5005"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/stock",
+      "publishAllPorts": true,
+      "useSSL": true
+    }
+  }
+}

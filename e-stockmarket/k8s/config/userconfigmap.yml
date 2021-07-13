@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user-config
+data:
+  sqlhost: userdb-service,1433
+  sqldb: "userdb"
+  sqluser: "sa"
+  sqlsecuritytype: "N"
