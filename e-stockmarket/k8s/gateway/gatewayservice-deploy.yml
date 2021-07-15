@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gatewayservice
+spec:
+  selector:
+    matchLabels:
+      app: gatewayservice
+  template:
+    metadata:
+      labels:
+        app: gatewayservice
+    spec:
+      containers:
+        - name: gatewayservice-container
+          image: 01386/estock-gateway:v1
+          env:
+            - name: ELASTIC_URL
+              value: "http://elk-service:9200" 
+          resources:
+            limits:
+              memory: "112Mi"
+              cpu: "30m"
+          ports:
+            - containerPort: 80

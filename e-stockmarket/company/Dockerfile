@@ -11,4 +11,4 @@ RUN dotnet publish -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 COPY --from=build /app/out ./
-ENTRYPOINT ["dotnet","Companies.API.dll"]
+ENTRYPOINT ["dotnet","company.dll"]

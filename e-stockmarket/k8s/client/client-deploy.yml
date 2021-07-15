@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-ui
+spec:
+  selector:
+    matchLabels:
+      app: client-ui
+  template:
+    metadata:
+      labels:
+        app: client-ui
+    spec:
+      containers:
+        - name: client-ui-container
+          image: 01386/estock-client:v2
+          ports:
+            - containerPort: 80

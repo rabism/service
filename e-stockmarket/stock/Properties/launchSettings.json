@@ -39,7 +39,7 @@
         "RABBIT_ADD_COMPANY_QUEUE":"newcustomer",
         "RABBIT_DELETE_COMPANY_QUEUE":"deletecustomer",
         "RABBIT_ADD_STOCK_QUEUE":"addstock",
-        "RABBIT_USERNAME":"guest",
+        "RABBIT_USERNAME":"user",
         "RABBIT_PASSWORD":"guest",
         "ELASTIC_URL":"http://localhost:9200"
 

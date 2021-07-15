@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: companydb-service
+spec:
+  #type: NodePort
+  selector:
+    app: companydb
+  ports:
+    - port: 1433

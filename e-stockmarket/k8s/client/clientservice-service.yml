@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-ui-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: client-ui
+  ports:
+    - port: 80

@@ -5,10 +5,10 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          //"Host": "company-service",
-          //"Port": 80
-          "Host": "localhost",
-          "Port": 5004
+          "Host": "company-service",
+          "Port": 80
+          //"Host": "localhost",
+          //"Port": 5004
         }
       ],
       "UpstreamPathTemplate": "/api/v1.0/market/company/info/{companycode}",
@@ -23,10 +23,10 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          //"Host": "company-service",
-          //"Port": 80
-          "Host": "localhost",
-          "Port": 5004
+          "Host": "company-service",
+          "Port": 80
+         // "Host": "localhost",
+          //"Port": 5004
         }
       ],
       "UpstreamPathTemplate": "/api/v1.0/market/company/getall",
@@ -41,10 +41,10 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          //"Host": "company-service",
-          //"Port": 80
-          "Host": "localhost",
-          "Port": 5004
+          "Host": "company-service",
+          "Port": 80
+         // "Host": "localhost",
+          //"Port": 5004
         }
       ],
       "UpstreamPathTemplate": "/api/v1.0/market/company/register",
@@ -59,10 +59,10 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          //"Host": "company-service",
-          //"Port": 80
-          "Host": "localhost",
-          "Port": 5004
+          "Host": "company-service",
+          "Port": 80
+         // "Host": "localhost",
+          //"Port": 5004
         }
       ],
       "UpstreamPathTemplate": "/api/v1.0/market/company/delete/{companycode}",
@@ -77,10 +77,10 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          //"Host": "stock-service",
-          //"Port": 80
-          "Host": "localhost",
-          "Port": 5005
+          "Host": "stock-service",
+          "Port": 80
+        //  "Host": "localhost",
+         // "Port": 5005
         }
       ],
       "UpstreamPathTemplate": "/api/v1.0/market/stock/add/{companycode}",
@@ -95,10 +95,10 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          //"Host": "stock-service",
-          //"Port": 80
-          "Host": "localhost",
-          "Port": 5005
+          "Host": "stock-service",
+          "Port": 80
+         // "Host": "localhost",
+          //"Port": 5005
         }
       ],
       "UpstreamPathTemplate": "/api/v1.0/market/stock/get/{companycode}/{startdate}/{enddate}",
@@ -113,10 +113,10 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          //"Host": "user-service",
-          //"Port": 80,
-          "Host": "localhost",
-          "Port": 5001
+          "Host": "user-service",
+          "Port": 80
+         // "Host": "localhost",
+          //"Port": 5001
         }
       ],
       "UpstreamPathTemplate": "/api/v1/user/register",
@@ -127,10 +127,10 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          //"Host": "user-service",
-          //"Port": 80
-          "Host": "localhost",
-          "Port": 5001
+          "Host": "user-service",
+          "Port": 80
+         // "Host": "localhost",
+          //"Port": 5001
         }
       ],
       "UpstreamPathTemplate": "/api/v1/users/authenticate",
@@ -141,10 +141,10 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          //"Host": "user-service",
-          //"Port": 80
-          "Host": "localhost",
-          "Port": 5001
+          "Host": "user-service",
+          "Port": 80
+        //  "Host": "localhost",
+          //"Port": 5001
         }
       ],
       "UpstreamPathTemplate": "/api/v1/users",

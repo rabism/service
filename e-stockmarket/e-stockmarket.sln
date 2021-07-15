@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompaniesAPI", "company\CompaniesAPI.csproj", "{8AB5C49F-6B9C-4E1A-A072-92BCDCE4BEED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "company", "company\company.csproj", "{8AB5C49F-6B9C-4E1A-A072-92BCDCE4BEED}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StocksAPI", "stock\StocksAPI.csproj", "{9D378B2A-D997-4919-A7C1-BE040C5C4AC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "stock", "stock\stock.csproj", "{9D378B2A-D997-4919-A7C1-BE040C5C4AC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIGateway", "gateway\APIGateway.csproj", "{96FB36F3-B528-4F77-AE27-3FA7773CCB38}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gateway", "gateway\gateway.csproj", "{96FB36F3-B528-4F77-AE27-3FA7773CCB38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Users.API", "user\Users.API.csproj", "{4E77F488-245E-4A74-B1F3-F4692B055263}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "user", "user\user.csproj", "{4E77F488-245E-4A74-B1F3-F4692B055263}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

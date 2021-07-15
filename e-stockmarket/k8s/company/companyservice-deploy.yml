@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: companyservice
+spec:
+  selector:
+    matchLabels:
+      app: companyservice
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: companyservice
+        version: v1
+    spec:
+      containers:
+        - name: companyservice-container
+          image: 01386/estock-company:v1
+          env:            
+            - name: SQL_HOST
+              value: "companydb-service,1433"
+            - name: SQL_DB
+              value: "CompanyDB"
+            - name: SQL_INTEGRATED_SECURITY
+              value: "N"
+            - name: SQL_USER
+              value: "SA"
+            - name: SQL_PASSWORD
+              value: "DZgE9tmQeHZxFDOpHWEm"
+            - name: RABBIT_HOST
+              value: "my-release-rabbitmq"
+            - name: RABBIT_ADD_COMPANY_QUEUE
+              value: "newcustomer" 
+            - name: RABBIT_DELETE_COMPANY_QUEUE
+              value: "deletecustomer" 
+            - name: RABBIT_ADD_STOCK_QUEUE
+              value: "addstock" 
+            - name: RABBIT_USERNAME
+              value: "user" 
+            - name: RABBIT_PASSWORD
+              value: "RIZJiYYMcH"
+            - name: ELASTIC_URL
+              value: "http://elk-service:9200"                                                     
+          resources:
+            limits:
+              memory: "100Mi"
+              cpu: "100m"
+          ports:
+            - containerPort: 80
