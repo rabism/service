@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: client-ui-service
 spec:
-  type: LoadBalancer
+  #type: LoadBalancer
   selector:
     app: client-ui
   ports:

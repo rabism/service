@@ -13,6 +13,6 @@ spec:
     spec:
       containers:
         - name: client-ui-container
-          image: 01386/estock-client:v2
+          image: 01386/estock-client:v5
           ports:
             - containerPort: 80
