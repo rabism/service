@@ -32,7 +32,7 @@ namespace stock.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPost]
         [Route("{companycode}")]
-        public async Task<IActionResult> Post([FromBody] StockDetail stock, string companycode)
+        public async Task<IActionResult> Post([FromBody] StockDetailRequest stock, string companycode)
         {
             try
             {
@@ -77,7 +77,7 @@ namespace stock.Controllers
             }
         }
 
-        private Stock MapToEntity(StockDetail stock,string companyCode)
+        private Stock MapToEntity(StockDetailRequest stock,string companyCode)
         {
             return new Stock
             {
@@ -101,15 +101,30 @@ namespace stock.Controllers
                     StartDate = startdate,
                     EndDate = enddate
                 });
-                var result=stocks.Select(x=>new StockDetailResponse{
-                    StockId=x.StockId,
-                    StockPrice=x.StockPrice,
-                    CompanyCode=x.CompanyCode,
-                    StockDateTime=x.StockDateTime,
-                    ExchangeName=x.ExchangeName,
-                    Time=x.StockDateTime.ToString("HH:mm")
 
-                }).ToList();
+
+                var stockSummary = stocks.GroupBy(s => s.ExchangeName)
+                    .Select(s => new StockSummary
+                    {
+                        ExchangeName = s.Key,
+                        MaxPrice = s.Max(m => m.StockPrice),
+                        MinPrice = s.Min(m => m.StockPrice),
+                        AvgPrice = s.Average(m => m.StockPrice)
+                    }).ToList();
+
+                var result = new StockDetailResponse
+                {
+                    Summary = stockSummary,
+                    Detail = stocks.Select(x => new StockDetail
+                    {
+                        StockId = x.StockId,
+                        StockPrice = x.StockPrice,
+                        CompanyCode = x.CompanyCode,
+                        StockDateTime = x.StockDateTime,
+                        ExchangeName = x.ExchangeName,
+                        Time = x.StockDateTime.ToString("HH:mm")
+                    }).ToList()
+                };
                 return Ok(result);
             }
             catch (StockNotFoundException pnf)

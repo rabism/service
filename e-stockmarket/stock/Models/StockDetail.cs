@@ -1,13 +1,17 @@
 using System.ComponentModel.DataAnnotations;
+using System;
+using System.Collections.Generic;
+
 namespace stock.Models
 {
     public class StockDetail
     {
-       
-        [Required]
+        public string StockId { get; set; }
         public decimal StockPrice { get; set; }
-        [Required]
+        public DateTime StockDateTime { get; set; } = DateTime.Now;
+        public string CompanyCode { get; set; }
         public string ExchangeName {get;set;}
-        
+        public string Time {get;set;}
+
     }
 }

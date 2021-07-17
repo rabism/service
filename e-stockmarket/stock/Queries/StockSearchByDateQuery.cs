@@ -26,7 +26,7 @@ namespace stock.Queries
             }
             public async Task<IReadOnlyList<Stock>> Handle(StockSearchByDateQuery query, CancellationToken cancellationToken)
             {
-                return await _context.Stocks.FindAsync(x => x.CompanyCode.Equals(query.CompanyCode) && x.StockDateTime > query.StartDate && x.StockDateTime < query.EndDate).Result.ToListAsync();
+                return await _context.Stocks.FindAsync(x => x.CompanyCode.Equals(query.CompanyCode) && x.StockDateTime > query.StartDate && x.StockDateTime <= query.EndDate).Result.ToListAsync();
             }
         }
 }
